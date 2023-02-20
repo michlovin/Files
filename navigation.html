@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="navigation.css" />
+  </head>
+  <body>
+    <script>
+      let cities = [
+        {
+          section: "cupertino",
+          label: "Cupertino",
+        },
+        {
+          section: "new-york-city",
+          label: "New York City",
+        },
+        {
+          section: "london",
+          label: "London",
+        },
+        {
+          section: "amsterdam",
+          label: "Amsterdam",
+        },
+        {
+          section: "tokyo",
+          label: "Tokyo",
+        },
+        {
+          section: "hong-kong",
+          label: "Hong Kong",
+        },
+        {
+          section: "sydney",
+          label: "Sydney",
+        },
+      ];
+      document.write(`<ul>`);
+      cities.map((city, i) => {
+        return document.write(
+          `
+          <li class="slider" onclick='selectedCity()'> 
+            <div id='city_${i}'class="city" >
+                ${city.label}
+                </div>
+                </li>
+        `
+        );
+      });
+      document.write(`</ul>`);
+    </script>
+    <script>
+      function selectedCity() {
+        let selectedEl = document.querySelectorAll(".selected");
+        selectedEl.forEach((element) => element.classList.remove("selected"));
+        let active = document.querySelectorAll(".active");
+        setTimeout(() => {
+          active.forEach((element) => element.classList.remove("active"));
+        }, 1000);
+        event.target.classList.add("active");
+        event.target.firstElementChild.classList.add("selected");
+      }
+    </script>
+  </body>
+</html>
